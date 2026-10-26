@@ -2,40 +2,282 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="description" content="Public overview of Extremome: extreme-environment metagenomics, the research workflow, repository map, current work and collaboration practices.">
+<meta property="og:title" content="Extremome — Project Overview">
+<meta property="og:description" content="From public environmental sequencing records to reproducible analysis and evidence-led research.">
 <title>Extremome — Project Overview</title>
-<meta name="description" content="Public overview of the Extremome extreme-environment metagenomics project: research pipeline, repository map, collaboration workflow and current work.">
 <style>
-:root{--bg:#f6f7f9;--paper:#fff;--ink:#172033;--muted:#667085;--line:#d9dee8;--blue:#2359c4;--blue-bg:#eef4ff;--green:#127450;--green-bg:#edf9f3;--amber:#9a5a08;--amber-bg:#fff7e8;--violet:#6548ad;--violet-bg:#f5f1ff;--dark:#101828;--shadow:0 10px 28px rgba(16,24,40,.06)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.65}a{color:var(--blue);text-underline-offset:3px}.page{max-width:1240px;margin:0 auto;padding:24px 24px 70px}
-.hero{background:var(--dark);color:#fff;border-radius:22px;padding:34px 38px 30px;box-shadow:var(--shadow)}.overline{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#98a2b3;font-weight:750}.hero h1{font-size:40px;line-height:1.12;margin:8px 0 12px;letter-spacing:-.03em}.hero p{max-width:78ch;color:#d0d5dd;font-size:16px;margin:0}.hero .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.hero .meta span{font-size:12px;border:1px solid #344054;background:#1d2939;border-radius:999px;padding:6px 10px;color:#e4e7ec}
-.nav{position:sticky;top:0;z-index:20;margin:16px 0 24px;background:rgba(246,247,249,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;gap:18px;overflow:auto;padding:10px 2px}.nav a{white-space:nowrap;text-decoration:none;font-size:13px;font-weight:650;color:#344054}.nav a:hover{color:var(--blue)}
-.section{scroll-margin-top:75px;margin:34px 0}.section h2{font-size:27px;line-height:1.25;margin:0 0 8px;letter-spacing:-.02em}.section>p{max-width:88ch;color:var(--muted);margin:0 0 16px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.card{background:var(--paper);border:1px solid #e4e7ec;border-radius:16px;padding:18px;box-shadow:0 4px 14px rgba(16,24,40,.03)}.card h3{font-size:16px;margin:3px 0 7px}.card p{font-size:13.5px;color:#475467;margin:0}.tag{display:inline-block;font:700 10.5px ui-monospace,SFMono-Regular,Menlo,monospace;border-radius:999px;padding:4px 7px;margin-bottom:7px;background:var(--blue-bg);color:var(--blue)}.tag.green{background:var(--green-bg);color:var(--green)}.tag.amber{background:var(--amber-bg);color:var(--amber)}.tag.violet{background:var(--violet-bg);color:var(--violet)}
-.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;align-items:stretch}.step{position:relative;background:#fff;border:1px solid #e4e7ec;border-radius:16px;padding:17px 16px;min-height:155px}.step:not(:last-child):after{content:"→";position:absolute;right:-13px;top:50%;transform:translateY(-50%);color:#98a2b3;background:var(--bg);padding:2px;font-weight:800;z-index:2}.step b{display:block;font-size:12px;color:var(--blue);letter-spacing:.04em;margin-bottom:5px}.step h3{font-size:15px;margin:0 0 7px}.step p{font-size:12.8px;color:#475467;margin:0}
-.repo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.repo{background:#fff;border:1px solid #e4e7ec;border-radius:16px;padding:19px}.repo-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.repo h3{font:750 15px ui-monospace,SFMono-Regular,Menlo,monospace;margin:0 0 7px;color:#1f4fb2;word-break:break-word}.repo .access{font-size:10.5px;border:1px solid #ead9af;background:#fff8e8;color:#80510a;border-radius:999px;padding:4px 7px;white-space:nowrap}.repo p{font-size:13.5px;color:#475467;margin:0 0 11px}.path-list{display:grid;grid-template-columns:1fr 1fr;gap:6px}.path{border:1px solid #eaecf0;background:#f8fafc;border-radius:9px;padding:8px 9px}.path code{font:700 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:#344054}.path span{display:block;font-size:11.8px;color:#667085;margin-top:2px}
-.workflow{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}.wstep{background:#fff;border:1px solid #e4e7ec;border-radius:13px;padding:13px 10px;text-align:center;position:relative}.wstep:not(:last-child):after{content:"›";position:absolute;right:-7px;top:43%;color:#98a2b3;font-size:22px;z-index:2}.wstep b{display:block;font-size:12px}.wstep span{display:block;font-size:11.5px;color:#667085;margin-top:4px}
-.snapshot{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.status-card{background:#fff;border:1px solid #e4e7ec;border-radius:16px;padding:18px}.status-card h3{font-size:15px;margin:0 0 8px}.status-card p{font-size:13px;color:#475467;margin:0 0 7px}.status-card .metric{font-size:24px;font-weight:800;letter-spacing:-.02em;color:#101828}.status-card .sub{font-size:11.5px;color:#667085}.issue-list{display:grid;gap:9px}.issue{background:#fff;border:1px solid #e4e7ec;border-radius:13px;padding:14px 15px;display:grid;grid-template-columns:70px 1fr;gap:13px}.issue .num{font:800 13px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--blue)}.issue h3{font-size:14px;margin:0 0 3px}.issue p{font-size:12.8px;color:#667085;margin:0}.boundary{background:#fff;border-left:4px solid var(--amber);border-radius:12px;padding:15px 17px;margin-top:16px}.boundary strong{display:block;margin-bottom:4px}.boundary p{margin:0;color:#5f4a23;font-size:13px}
-.public-private{display:grid;grid-template-columns:1fr 1fr;gap:12px}.box{border-radius:16px;padding:18px;border:1px solid}.box h3{margin:0 0 9px;font-size:15px}.box ul{margin:0;padding-left:18px}.box li{font-size:13px;margin:5px 0}.box.public{background:var(--green-bg);border-color:#c9ead9}.box.private{background:#f8fafc;border-color:#dfe4ec}.footer{margin-top:40px;background:#101828;color:#d0d5dd;border-radius:16px;padding:18px 20px;font-size:12.5px}.footer b{color:#fff}
-@media(max-width:980px){.cards{grid-template-columns:1fr 1fr}.flow{grid-template-columns:1fr}.step:not(:last-child):after{content:"↓";right:auto;left:50%;top:auto;bottom:-15px}.repo-grid,.snapshot,.public-private{grid-template-columns:1fr}.workflow{grid-template-columns:1fr 1fr}.wstep:not(:last-child):after{display:none}}@media(max-width:620px){.page{padding:14px 12px 44px}.hero{padding:25px 21px}.hero h1{font-size:31px}.cards{grid-template-columns:1fr}.path-list{grid-template-columns:1fr}.workflow{grid-template-columns:1fr}.issue{grid-template-columns:1fr;gap:3px}.nav{gap:13px}}
+:root{color-scheme:light;--bg:#f4f7fb;--paper:#fff;--ink:#17243a;--muted:#5d6b7e;--line:#dce4ee;--blue:#315bc4;--blue-dark:#21439b;--teal:#08796a;--mint:#e1f5ed;--amber:#8a5512;--amber-bg:#fff4df;--navy:#17243a;--shadow:0 10px 28px rgba(25,44,74,.055);--r:16px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--blue-dark);text-underline-offset:3px}
+a:hover{color:var(--teal)}
+a:focus-visible,summary:focus-visible{outline:3px solid #8eafff;outline-offset:3px}
+.wrap{width:min(1160px,calc(100% - 36px));margin:0 auto}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(244,247,251,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(220,228,238,.9)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:66px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);font-size:12px;font-weight:850;letter-spacing:.13em;text-decoration:none;white-space:nowrap}
+.mark{display:grid;place-items:center;width:33px;height:33px;border-radius:10px;background:var(--navy);color:white;font-size:11px;letter-spacing:0}
+.navlinks{display:flex;align-items:center;gap:17px;flex-wrap:wrap;font-size:12px}
+.navlinks a{color:var(--muted);text-decoration:none}
+.navlinks a:hover{color:var(--ink)}
+.navlinks .repo-link{padding:7px 12px;border-radius:999px;background:var(--navy);color:white}
+.hero{padding:58px 0 34px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(280px,.7fr);gap:28px;align-items:stretch}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--teal);font-size:10px;font-weight:850;letter-spacing:.14em;text-transform:uppercase}
+.eyebrow:before{content:"";width:20px;height:2px;background:var(--teal)}
+h1{max-width:760px;margin:16px 0 17px;font-size:clamp(36px,5.2vw,62px);line-height:1.06;letter-spacing:-.045em;font-weight:790}
+.hero-copy{max-width:690px;margin:0;color:var(--muted);font-size:clamp(16px,1.8vw,19px);line-height:1.72}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.button{display:inline-flex;align-items:center;justify-content:center;padding:10px 15px;border:1px solid var(--line);border-radius:999px;background:white;color:var(--ink);font-size:12px;font-weight:750;text-decoration:none}
+.button.primary{border-color:var(--navy);background:var(--navy);color:white}
+.status-card{align-self:start;position:relative;overflow:hidden;padding:23px;border-radius:22px;background:var(--navy);color:white;box-shadow:var(--shadow)}
+.status-card:after{content:"";position:absolute;right:-100px;top:-100px;width:220px;height:220px;border:1px solid rgba(255,255,255,.14);border-radius:50%;box-shadow:0 0 0 30px rgba(255,255,255,.025),0 0 0 60px rgba(255,255,255,.018);pointer-events:none}
+.status-card h2{position:relative;margin:0 0 4px;font-size:18px;letter-spacing:-.02em}
+.asof{position:relative;color:#c3cede;font-size:11px}
+.status-list{position:relative;display:grid;gap:16px;margin:23px 0 0;padding:0;list-style:none}
+.status-list li{display:grid;grid-template-columns:9px 1fr;gap:10px}
+.dot{width:7px;height:7px;margin-top:8px;border-radius:50%;background:#8fe1c4}
+.dot.amber{background:#f0c26d}
+.status-list strong{display:block;font-size:12px}
+.status-list span{display:block;margin-top:2px;color:#c3cede;font-size:11px;line-height:1.6}
+.note{margin-top:16px;padding:12px 14px;border:1px solid #f0d9a9;border-radius:12px;background:var(--amber-bg);color:#69430d;font-size:11px;line-height:1.65}
+section{padding:32px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:18px}
+.kicker{color:var(--muted);font-size:10px;font-weight:850;letter-spacing:.13em;text-transform:uppercase}
+.section-head h2{margin:6px 0 0;font-size:clamp(24px,3vw,34px);line-height:1.2;letter-spacing:-.035em}
+.section-head p{max-width:500px;margin:0;color:var(--muted);font-size:12px}
+.pipeline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.step{min-width:0;padding:17px 15px;border:1px solid var(--line);border-radius:15px;background:white}
+.stepno{display:grid;place-items:center;width:29px;height:29px;border-radius:9px;background:var(--mint);color:var(--teal);font-size:11px;font-weight:850}
+.step h3{margin:13px 0 6px;font-size:13px;line-height:1.4}
+.step p{margin:0;color:var(--muted);font-size:11px;line-height:1.7}
+.caption{margin:12px 0 0;color:var(--muted);font-size:11px}
+.repo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.repo{min-width:0;padding:19px;border:1px solid var(--line);border-radius:var(--r);background:white}
+.repohead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.repo h3{margin:0;font-size:14px;line-height:1.4;overflow-wrap:anywhere}
+.access{flex:0 0 auto;padding:3px 7px;border:1px solid #e1e6ee;border-radius:999px;color:#667085;font-size:9px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.repo p{margin:9px 0 13px;color:var(--muted);font-size:11.5px}
+.repo a{overflow-wrap:anywhere}
+.folder-label{display:block;margin:12px 0 6px;color:#68778b;font-size:9px;font-weight:850;letter-spacing:.1em;text-transform:uppercase}
+.foldergrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+.folder{min-width:0;padding:7px 8px;border:1px solid #e7ecf2;border-radius:8px;background:#f8fafc}
+.folder code{display:block;color:#344054;font-size:10px;font-weight:800;overflow-wrap:anywhere}
+.folder span{display:block;margin-top:2px;color:var(--muted);font-size:10px;line-height:1.5}
+details{margin-top:11px;border-top:1px solid #edf0f5;padding-top:9px}
+summary{cursor:pointer;color:var(--blue-dark);font-size:11px;font-weight:750}
+.detailtext{margin-top:10px}
+.filelist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;margin:0;padding:0;list-style:none}
+.filelist li{padding:6px 8px;border-radius:7px;background:#f8fafc;color:var(--muted);font-size:10px;overflow-wrap:anywhere}
+.filelist code{color:#344054;font-size:10px;font-weight:750}
+.repo-note{margin-top:14px;padding:13px 15px;border-left:3px solid var(--blue);background:#edf3ff;color:#304b7d;font-size:11px;line-height:1.7}
+.workgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.workcard{padding:17px;border:1px solid var(--line);border-radius:15px;background:white}
+.state{display:inline-flex;margin-bottom:9px;padding:3px 7px;border-radius:999px;background:#edf3ff;color:#3155a6;font-size:9px;font-weight:850;letter-spacing:.04em;text-transform:uppercase}
+.workcard h3{margin:0 0 6px;font-size:13px}
+.workcard p{margin:0;color:var(--muted);font-size:11px;line-height:1.7}
+.flow-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+.panel{padding:20px;border:1px solid var(--line);border-radius:var(--r);background:white}
+.flowlist{display:grid;gap:14px;margin:0;padding:0;list-style:none;counter-reset:work}
+.flowlist li{display:grid;grid-template-columns:28px 1fr;gap:10px;counter-increment:work}
+.flowlist li:before{content:counter(work);display:grid;place-items:center;width:27px;height:27px;border:1px solid #cad6ed;border-radius:50%;color:var(--blue);font-size:10px;font-weight:850}
+.flowlist strong{display:block;font-size:12px}
+.flowlist span{display:block;margin-top:2px;color:var(--muted);font-size:11px;line-height:1.65}
+.boundary{padding:21px;border:1px solid #c7e5dd;border-radius:var(--r);background:#eaf8f3}
+.boundary h3{margin:0 0 8px;font-size:16px}
+.boundary p{margin:0;color:#315c53;font-size:11.5px;line-height:1.7}
+.boundary ul{margin:12px 0 0;padding-left:17px;color:#315c53;font-size:11px}
+.boundary li+li{margin-top:5px}
+.public-private{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.scope{padding:18px;border:1px solid var(--line);border-radius:15px;background:white}
+.scope h3{margin:0 0 8px;font-size:13px}
+.scope ul{margin:0;padding-left:17px}
+.scope li{margin:5px 0;color:var(--muted);font-size:11px}
+footer{margin-top:22px;padding:22px 0 32px;border-top:1px solid var(--line);color:var(--muted);font-size:10px}
+.footerrow{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.pipeline{grid-template-columns:repeat(2,minmax(0,1fr))}.step:last-child{grid-column:1/-1}.workgrid,.flow-grid{grid-template-columns:1fr}}
+@media(max-width:650px){.wrap{width:calc(100% - 26px)}.nav{align-items:flex-start;padding:12px 0}.navlinks{justify-content:flex-end;gap:8px 12px;font-size:10px}.navlinks a:not(.repo-link){display:none}.hero{padding:39px 0 24px}.section-head{display:block}.section-head p{margin-top:9px}.repo-grid,.pipeline,.public-private{grid-template-columns:1fr}.step:last-child{grid-column:auto}.foldergrid,.filelist{grid-template-columns:1fr}.status-card{padding:20px}.repo{padding:16px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
-<main class="page">
-<header class="hero"><div class="overline">Extremome · Public Project Overview</div><h1>Extreme-environment metagenomics, organized as one reproducible research system.</h1><p>Extremome is building a shared path from public extreme-environment sequencing records to comparable metagenomic outputs, downstream functional analysis, and eventually paper-facing evidence. This page is the public reading layer: it explains the project structure and current work without exposing private operational infrastructure or unpublished scientific detail.</p><div class="meta"><span>Public overview v0.1</span><span>Snapshot · 26 Oct 2026</span><span>Working repositories remain team-access</span></div></header>
-<nav class="nav" aria-label="Page sections"><a href="#project">Project</a><a href="#pipeline">Pipeline</a><a href="#github">GitHub map</a><a href="#folders">Folder guide</a><a href="#contribute">How work moves</a><a href="#current">Current work</a><a href="#boundary">Public boundary</a></nav>
-<section id="project" class="section"><h2>What the project is trying to make possible</h2><p>Our immediate goal is to make extreme-environment metagenomic datasets genuinely comparable before drawing biological conclusions from them. That means preserving sample and Run identity, processing datasets through a consistent upstream workflow, keeping both molecular sequence information and microbial carrier information, and fixing the exact versions used by downstream analysis.</p><div class="cards"><div class="card"><span class="tag">SOURCE</span><h3>Start from qualified public records</h3><p>Papers, archive accessions, Run-level metadata and source context are collected into a shared baseline rather than separate personal lists.</p></div><div class="card"><span class="tag green">UPSTREAM</span><h3>Process data reproducibly</h3><p>QC, assembly, mapping, gene calling and carrier recovery are executed through a versioned workflow with recoverable provenance.</p></div><div class="card"><span class="tag violet">ANALYSIS</span><h3>Compare fixed outputs</h3><p>Downstream analyses consume explicit upstream versions instead of an unspecified “latest” dataset or method state.</p></div><div class="card"><span class="tag amber">PAPER</span><h3>Connect claims back to evidence</h3><p>Figures, source data, analysis code and exact dependencies are kept linked as the manuscript becomes evidence-bearing.</p></div></div></section>
-<section id="pipeline" class="section"><h2>The research pipeline at a glance</h2><p>This is the public scientific and engineering spine. Detailed internal qualification layers, cluster operations and unpublished analysis logic are intentionally not reproduced here.</p><div class="flow"><div class="step"><b>01 · SOURCE BASELINE</b><h3>Papers + public sequencing records</h3><p>Resolve source context, accessions and Run-level metadata; keep uncertainty rather than forcing missing values.</p></div><div class="step"><b>02 · INPUT + QC</b><h3>Verified sequencing inputs</h3><p>Confirm identities and paired reads, then apply a consistent read-quality workflow.</p></div><div class="step"><b>03 · RECONSTRUCTION</b><h3>Assembly + molecular space</h3><p>Assemble each scientific observation and retain protein and gene occurrences across eligible contigs.</p></div><div class="step"><b>04 · CARRIER RECOVERY</b><h3>Microbial context</h3><p>Recover genome-level carrier information where supported while keeping unresolved links explicit.</p></div><div class="step"><b>05 · ANALYSIS</b><h3>Versioned comparison + paper evidence</h3><p>Use fixed upstream outputs for functional and ecological comparisons, then connect stable results to figures and manuscript claims.</p></div></div><div class="boundary"><strong>Engineering completion is not a biological conclusion.</strong><p>A successful workflow run does not by itself prove enzyme function, biological absence, sample independence or paper readiness. Those questions are evaluated separately downstream.</p></div></section>
-<section id="github" class="section"><h2>How the GitHub work is divided</h2><p>Extremome uses separate repositories because source curation, upstream processing, downstream analysis and manuscript composition change at different rates and have different review needs. Four repositories form the core research chain; a separate web repository supports result access and visualization. At this snapshot the working repositories are private team repositories; this page is the public project entrance.</p><div class="repo-grid">
-<article class="repo"><div class="repo-head"><h3>Extremome-upstream-source-literature-baseline</h3><span class="access">team access</span></div><p>Shared papers, public data records, source context and Run-level metadata. It gives the team one starting baseline for deciding what data exist and what the available evidence actually supports.</p><div class="path-list"><div class="path"><code>current/</code><span>Current working source/data snapshot.</span></div><div class="path"><code>package/</code><span>Frozen source-baseline package material.</span></div></div></article>
-<article class="repo"><div class="repo-head"><h3>Extremome-upstream</h3><span class="access">team access</span></div><p>The shared metagenomic processing implementation. It turns qualified sequencing inputs into versioned processing outputs that downstream work can trace back to the exact input and implementation used.</p><div class="path-list"><div class="path"><code>workflow/</code><span>Main processing and production entry points.</span></div><div class="path"><code>src/</code><span>Core portable implementation.</span></div><div class="path"><code>manifests/</code><span>Run registry, production queue and frozen batches.</span></div><div class="path"><code>config/</code><span>Portable configuration examples and defaults.</span></div></div></article>
-<article class="repo"><div class="repo-head"><h3>Extremome-analysis</h3><span class="access">team access</span></div><p>The shared downstream workspace. It connects fixed upstream outputs to reproducible comparisons, integrated methods, plotting and paper-facing analysis.</p><div class="path-list"><div class="path"><code>contracts/</code><span>Versioned analysis input/output interfaces.</span></div><div class="path"><code>adapters/</code><span>Integrations for independently maintained methods.</span></div><div class="path"><code>analysis/</code><span>Shared analysis entry points.</span></div><div class="path"><code>plotting/</code><span>Figure-producing code.</span></div></div></article>
-<article class="repo"><div class="repo-head"><h3>Extremome-paper</h3><span class="access">team access</span></div><p>The manuscript composition workspace. It keeps claims, figures, source data, analysis paths and exact upstream dependencies connected as the paper develops.</p><div class="path-list"><div class="path"><code>manuscript/</code><span>Manuscript composition.</span></div><div class="path"><code>figures/ + source_data/</code><span>Displays and the data that support them.</span></div><div class="path"><code>components/</code><span>Exact upstream and analysis dependencies.</span></div><div class="path"><code>paper_map.tsv</code><span>Claim-to-evidence mapping surface.</span></div></div></article>
-</div><div class="boundary"><strong>Supporting repository · <code>Extremome-web</code></strong><p>This separate team repository supports the project result portal and database-facing web layer. It is not a fifth scientific stage, and this public overview does not expose its private deployment or database implementation.</p></div></section>
-<section id="folders" class="section"><h2>How to read the upstream repository</h2><p>The upstream repository is where most day-to-day pipeline work is coordinated. These are the paths a collaborator is most likely to need first.</p><div class="repo"><div class="path-list"><div class="path"><code>manifests/</code><span>Project Run identities, batch membership and production queue.</span></div><div class="path"><code>workflow/</code><span>Command-line entry points that run or package the pipeline.</span></div><div class="path"><code>src/</code><span>Reusable pipeline implementation used by the workflow layer.</span></div><div class="path"><code>config/</code><span>Portable settings and examples; live site bindings stay outside the repository.</span></div><div class="path"><code>schemas/</code><span>Machine-readable contracts for shared data objects.</span></div><div class="path"><code>docs/</code><span>Methods, batch rationale, recovery rules and contributor-facing explanations.</span></div><div class="path"><code>executors/</code><span>Site adapters and execution wrappers without live credentials or paths.</span></div><div class="path"><code>environment/</code><span>Software and database dependency information.</span></div><div class="path"><code>tests/ + fixtures/</code><span>Bounded checks that keep portable behavior reproducible.</span></div><div class="path"><code>provenance/</code><span>Traceability information for versioned processing outputs.</span></div></div></div></section>
-<section id="contribute" class="section"><h2>How a change moves through the team</h2><p>We use GitHub as a review surface, not as a replacement for scientific judgment. Small fixes can be proposed directly; larger changes normally start from an Issue so the scope and evidence are visible before the shared branch changes.</p><div class="workflow"><div class="wstep"><b>1. Issue</b><span>Describe the problem, source, method or change.</span></div><div class="wstep"><b>2. Branch</b><span>Work from the current shared base.</span></div><div class="wstep"><b>3. Change</b><span>Implement, curate or analyze the scoped object.</span></div><div class="wstep"><b>4. Check</b><span>Run the relevant tests or integrity checks.</span></div><div class="wstep"><b>5. Pull Request</b><span>Explain what changed, why and how it was checked.</span></div><div class="wstep"><b>6. Human review</b><span>Shared changes are reviewed by Bohui (@bibobrain).</span></div><div class="wstep"><b>7. Merge + pin</b><span>Downstream work records the exact version it uses.</span></div></div><div class="boundary"><strong>Do not build paper-facing work from an unspecified “latest” revision.</strong><p>Once a dataset, workflow or analysis becomes an input to another part of the project, the consumer should record the exact commit, batch or snapshot it used.</p></div></section>
-<section id="current" class="section"><h2>Current work snapshot</h2><p>The project is active. The items below are deliberately high level: they summarize the current collaboration surface without publishing private operational records, cluster paths or unpublished analysis detail.</p><div class="snapshot"><div class="status-card"><h3>Source baseline</h3><div class="metric">2,156 Runs</div><p>Current shared snapshot across 423 standardized metadata fields.</p><div class="sub">Metadata remain evidence-bounded; blank or unresolved values are kept when the source does not support a confident answer.</div></div><div class="status-card"><h3>Upstream implementation</h3><div class="metric">1.0.0-dev.17</div><p>Usable for engineering and integration work, but still under real-data production testing.</p><div class="sub">The three-real-sample production stability test has not yet passed.</div></div><div class="status-card"><h3>Downstream + paper</h3><div class="metric">Active build</div><p>The shared analysis and paper structures exist, but no paper-level analysis snapshot or finished evidence-bearing manuscript has been frozen.</p><div class="sub">Scientific conclusions remain open.</div></div></div><h3 style="margin:22px 0 10px">Open upstream work</h3><div class="issue-list"><article class="issue"><div class="num">Issue #1</div><div><h3>Portable upstream implementation and engineering CI</h3><p>Make the shared pipeline cloneable, testable and reviewable without exporting live deployment bindings or raw data.</p></div></article><article class="issue"><div class="num">Issue #17</div><div><h3>Pioneer-100 commissioning</h3><p>Use the first 100 production-eligible Runs to stress the workflow, compare bounded engineering choices and freeze a production profile only after the cohort is processed consistently.</p></div></article><article class="issue"><div class="num">Issue #23</div><div><h3>B002, production positions 101–200</h3><p>Reconcile existing raw-data inventory first, reuse verified bytes where they already exist, download only confirmed missing members, then continue ordinary production.</p></div></article></div><div class="boundary"><strong>Runtime note.</strong><p>No GitHub Actions were active or queued when this public snapshot was prepared. Operational HPC activity is intentionally not exposed on this page; the public status is expressed through the repository milestones above.</p></div></section>
-<section id="boundary" class="section"><h2>What this public page includes — and what it deliberately leaves private</h2><div class="public-private"><div class="box public"><h3>Published here</h3><ul><li>The project purpose and high-level research pipeline.</li><li>The four-repository collaboration map and useful folder paths.</li><li>The normal Issue → branch → PR → human review workflow.</li><li>Current high-level workstreams, versions and scientific caveats.</li><li>Enough context for a new collaborator to understand where work belongs.</li></ul></div><div class="box private"><h3>Not published here</h3><ul><li>Credentials, live server bindings, local paths or private deployment configuration.</li><li>Private execution logs and internal workflow records.</li><li>Unpublished candidate-level analysis, detailed scientific qualification logic or private work logs.</li><li>Raw data that belong in external archives or controlled project storage rather than Git.</li><li>Any claim that the paper, enzyme function or final biological interpretation is already complete.</li></ul></div></div></section>
-<footer class="footer"><b>Version scope.</b> This is a public collaboration overview, not a scholarly release. It describes the project structure and current high-level state as of 26 Oct 2026. The internal research tree and detailed production and analysis evidence remain the project authorities for ongoing work.</footer>
+<header class="topbar">
+<div class="wrap nav">
+<a class="brand" href="#top" aria-label="Extremome project overview"><span class="mark" aria-hidden="true">EX</span><span>EXTREMOME</span></a>
+<nav class="navlinks" aria-label="Main navigation">
+<a href="#workflow">Workflow</a><a href="#repositories">Repositories</a><a href="#current">Current work</a><a href="#collaboration">Collaboration</a><a class="repo-link" href="https://github.com/PlasticBPro/Extremome">GitHub repository ↗</a>
+</nav>
+</div>
+</header>
+<main id="top">
+<section class="hero">
+<div class="wrap hero-grid">
+<div>
+<div class="eyebrow">Public overview v0.2.0 · 26 October 2026</div>
+<h1>From extreme-environment data to evidence-led research.</h1>
+<p class="hero-copy">Extremome studies microbial communities and candidate enzymes associated with plastic-related transformation in extreme environments. The project combines curated public sequencing records, reproducible metagenomic processing, downstream analysis, and evidence-linked manuscript work.</p>
+<div class="actions"><a class="button primary" href="#workflow">Explore the workflow ↓</a><a class="button" href="https://plasticbpro.github.io/Extremome/">Open the public site ↗</a></div>
+<div class="note"><strong>Scientific boundary:</strong> computational evidence can prioritize candidates, but it does not by itself establish measured enzyme activity or prove that a sample degrades plastic.</div>
+</div>
+<aside class="status-card" aria-labelledby="status-title">
+<h2 id="status-title">Current project focus</h2>
+<div class="asof">Snapshot checked 26 October 2026 · UTC+8</div>
+<ul class="status-list">
+<li><span class="dot amber" aria-hidden="true"></span><div><strong>Commission the shared pipeline</strong><span>Test the portable workflow on real data and resolve integration issues before expanding routine production.</span></div></li>
+<li><span class="dot amber" aria-hidden="true"></span><div><strong>Reconcile source inventory</strong><span>Reuse verified inputs, identify what is genuinely missing, and avoid unnecessary re-downloads.</span></div></li>
+<li><span class="dot" aria-hidden="true"></span><div><strong>Align team documentation</strong><span>Keep source records, analysis, manuscript work, and contribution guidance consistent across repositories.</span></div></li>
+</ul>
+</aside>
+</div>
+</section>
+
+<section id="workflow">
+<div class="wrap">
+<div class="section-head"><div><div class="kicker">Research workflow</div><h2>One connected process, with evidence retained at each step</h2></div><p>The pipeline is being built around the available data, current computing resources, and the need to make outputs comparable and reproducible. The page shows the research-facing overview, not internal implementation or qualification layers.</p></div>
+<div class="pipeline">
+<article class="step"><div class="stepno">01</div><h3>Curate source records</h3><p>Connect papers, archive accessions, environmental context, and sample/Run metadata. Keep source uncertainty visible.</p></article>
+<article class="step"><div class="stepno">02</div><h3>Qualify and process inputs</h3><p>Check input identity and quality, then run a documented workflow with recoverable inputs and outputs.</p></article>
+<article class="step"><div class="stepno">03</div><h3>Reconstruct genomic context</h3><p>Assemble sequence data and recover genes, proteins, and microbial context where the evidence supports it.</p></article>
+<article class="step"><div class="stepno">04</div><h3>Compare candidate evidence</h3><p>Combine sequence, evolutionary, structural, genomic-context, and environmental evidence rather than relying on one score.</p></article>
+<article class="step"><div class="stepno">05</div><h3>Build checkable results</h3><p>Use fixed inputs and versions for downstream analysis, then connect figures and interpretations to their supporting evidence.</p></article>
+</div>
+<p class="caption">High-performance computing supports large jobs, but this page is not a live job monitor and does not publish cluster paths, resource settings, or job-level identifiers.</p>
+</div>
+</section>
+
+<section id="repositories">
+<div class="wrap">
+<div class="section-head"><div><div class="kicker">GitHub repository map</div><h2>Where each part of the work lives</h2></div><p>The repositories are separated by responsibility. The four core research repositories are private team workspaces; their names and first-level folder roles are shown here so the project structure is understandable without exposing their internal data or implementation details.</p></div>
+<div class="repo-grid">
+<article class="repo">
+<div class="repohead"><h3><a href="https://github.com/PlasticBPro/Extremome-upstream-source-literature-baseline">Extremome-upstream-source-literature-baseline ↗</a></h3><span class="access">Team access</span></div>
+<p>The shared starting point for papers, public archive records, source context, and Run-level metadata. New sources and corrections should join this baseline rather than remain in personal lists.</p>
+<span class="folder-label">Top-level folders</span>
+<div class="foldergrid"><div class="folder"><code>current/</code><span>The current shared source and metadata snapshot.</span></div><div class="folder"><code>package/</code><span>Versioned source-baseline package material.</span></div></div>
+<details><summary>Key root files</summary><div class="detailtext"><ul class="filelist"><li><code>README.md</code> — how to read and contribute.</li><li><code>MANIFEST.sha256</code> — checksums for the distributed baseline.</li><li><code>DISTRIBUTION.json</code> — package identity and distribution metadata.</li><li><code>RELEASE.md</code> — what the baseline snapshot means.</li><li><code>verify_baseline.py</code> — verifies baseline integrity.</li></ul></div></details>
+</article>
+
+<article class="repo">
+<div class="repohead"><h3><a href="https://github.com/PlasticBPro/Extremome-upstream">Extremome-upstream ↗</a></h3><span class="access">Team access</span></div>
+<p>The shared metagenomic processing pipeline. It converts qualified sequencing inputs into traceable outputs for downstream analysis.</p>
+<span class="folder-label">Top-level folders</span>
+<div class="foldergrid">
+<div class="folder"><code>workflow/</code><span>Workflow entry points and production orchestration.</span></div><div class="folder"><code>src/</code><span>Reusable pipeline implementation.</span></div>
+<div class="folder"><code>config/</code><span>Portable settings and defaults.</span></div><div class="folder"><code>manifests/</code><span>Input inventories and batch manifests.</span></div>
+<div class="folder"><code>schemas/</code><span>Contracts for shared data objects.</span></div><div class="folder"><code>executors/</code><span>Execution adapters and wrappers.</span></div>
+<div class="folder"><code>provenance/</code><span>Records linking outputs to their inputs and processing.</span></div><div class="folder"><code>environment/</code><span>Software and dependency definitions.</span></div>
+<div class="folder"><code>fixtures/</code><span>Small controlled examples for checks.</span></div><div class="folder"><code>tests/</code><span>Automated checks for expected behavior.</span></div>
+<div class="folder"><code>docs/</code><span>Methods, contributor guidance, and workflow explanations.</span></div><div class="folder"><code>.github/</code><span>Repository contribution templates and GitHub automation.</span></div>
+</div>
+<details><summary>Key root files</summary><div class="detailtext"><ul class="filelist"><li><code>README.md</code> — purpose and first-use guidance.</li><li><code>CONTRIBUTING.md</code> — contribution expectations.</li><li><code>STATUS.md</code> — current high-level status.</li><li><code>VERSION</code> — version scope for the repository interface.</li><li><code>REPOSITORY_STATE.yaml</code> — structured repository state.</li><li><code>SOURCE_PROVENANCE.json</code> — source lineage for the repository export.</li></ul></div></details>
+</article>
+
+<article class="repo">
+<div class="repohead"><h3><a href="https://github.com/PlasticBPro/Extremome-analysis">Extremome-analysis ↗</a></h3><span class="access">Team access</span></div>
+<p>The downstream analysis workspace. It connects fixed upstream outputs to reproducible comparisons, method integrations, and figures.</p>
+<span class="folder-label">Top-level folders</span>
+<div class="foldergrid">
+<div class="folder"><code>adapters/</code><span>Connect external or independently maintained methods.</span></div><div class="folder"><code>analysis/</code><span>Shared analysis entry points and logic.</span></div>
+<div class="folder"><code>configs/</code><span>Analysis configuration.</span></div><div class="folder"><code>contracts/</code><span>Input/output expectations and interfaces.</span></div>
+<div class="folder"><code>plotting/</code><span>Code that creates analysis figures.</span></div><div class="folder"><code>fixtures/</code><span>Small example inputs for testing.</span></div>
+<div class="folder"><code>tests/</code><span>Checks for analysis behavior and interfaces.</span></div><div class="folder"><code>environment/</code><span>Software dependencies for analysis.</span></div>
+<div class="folder"><code>docs/</code><span>Methods and contributor guidance.</span></div><div class="folder"><code>.github/</code><span>GitHub contribution and automation files.</span></div>
+</div>
+<details><summary>Key root files</summary><div class="detailtext"><ul class="filelist"><li><code>README.md</code> — analysis purpose and usage.</li><li><code>CONTRIBUTING.md</code> — contribution expectations.</li><li><code>EXPORT_PROJECTION.json</code> — describes the repository export.</li><li><code>STATUS.md</code> — current high-level status.</li></ul></div></details>
+</article>
+
+<article class="repo">
+<div class="repohead"><h3><a href="https://github.com/PlasticBPro/Extremome-paper">Extremome-paper ↗</a></h3><span class="access">Team access</span></div>
+<p>The manuscript workspace. It connects written claims with figures, source data, analysis paths, and the exact dependencies used by the paper.</p>
+<span class="folder-label">Top-level folders</span>
+<div class="foldergrid">
+<div class="folder"><code>body/</code><span>Section text for the manuscript.</span></div><div class="folder"><code>manuscript/</code><span>Manuscript assembly and composition.</span></div>
+<div class="folder"><code>claims/</code><span>Structured claim records.</span></div><div class="folder"><code>figures/</code><span>Figure outputs and supporting material.</span></div>
+<div class="folder"><code>source_data/</code><span>Data directly supporting displays.</span></div><div class="folder"><code>tables/</code><span>Tables and their source-facing outputs.</span></div>
+<div class="folder"><code>data/</code><span>Study inputs and analysis data.</span></div><div class="folder"><code>analysis/</code><span>Analysis used by the manuscript.</span></div>
+<div class="folder"><code>components/</code><span>Exact dependencies on shared components.</span></div><div class="folder"><code>workflow/</code><span>Reproducible build and analysis steps.</span></div>
+<div class="folder"><code>environment/</code><span>Software and database dependencies.</span></div><div class="folder"><code>validation/</code><span>Checks on manuscript-facing artifacts.</span></div>
+<div class="folder"><code>appendix/</code><span>Appendix material.</span></div><div class="folder"><code>supplement/</code><span>Supplementary methods and results.</span></div>
+<div class="folder"><code>preamble/</code><span>Shared document styles and LaTeX commands.</span></div><div class="folder"><code>metadata/</code><span>Paper and supporting metadata.</span></div>
+<div class="folder"><code>docs/</code><span>Manuscript and repository guidance.</span></div><div class="folder"><code>tests/</code><span>Checks for reproducibility and structure.</span></div>
+<div class="folder"><code>.github/</code><span>GitHub contribution and automation files.</span></div>
+</div>
+<details><summary>Key root files</summary><div class="detailtext"><ul class="filelist"><li><code>bidgata-main.tex</code> — manuscript build entry point.</li><li><code>references.bib</code> — bibliography records.</li><li><code>paper_map.tsv</code> — map linking paper claims to supporting material.</li><li><code>CODE_AVAILABILITY.md</code> — code availability statement.</li><li><code>DATA_AVAILABILITY.md</code> — data availability statement.</li><li><code>Makefile</code> — repeatable build commands.</li></ul></div></details>
+</article>
+
+<article class="repo">
+<div class="repohead"><h3><a href="https://github.com/PlasticBPro/Extremome-web">Extremome-web ↗</a></h3><span class="access">Team access</span></div>
+<p>A separate supporting repository for the project result portal and web interface. It is a service layer for access and presentation, not another scientific stage.</p>
+<p>The public overview intentionally does not list its internal folders, database structure, deployment bindings, or operational configuration.</p>
+</article>
+
+<article class="repo">
+<div class="repohead"><h3><a href="https://github.com/PlasticBPro/Extremome">Extremome — public overview ↗</a></h3><span class="access">Public</span></div>
+<p>This repository is the public entry point. It contains the overview page and short guidance for reading or proposing changes to it.</p>
+<span class="folder-label">Public entry files</span>
+<div class="foldergrid">
+<div class="folder"><code>README.md</code><span>Project purpose and first link into the site.</span></div><div class="folder"><code>index.html</code><span>The public overview website served by GitHub Pages.</span></div>
+<div class="folder"><code>CONTRIBUTING.md</code><span>How to suggest and review public-facing changes.</span></div><div class="folder"><code>STATUS.md</code><span>Dated high-level project snapshot.</span></div>
+<div class="folder"><code>.github/</code><span>Pull Request review template.</span></div>
+</div>
+</article>
+</div>
+<div class="repo-note"><strong>Access:</strong> the four core research repositories and the supporting web repository are private team workspaces. Their first-level responsibilities are shown for orientation; detailed data, deeper implementation internals, private Issues/PRs, and unpublished candidate-level results are not part of this public site.</div>
+</div>
+</section>
+
+<section id="current">
+<div class="wrap">
+<div class="section-head"><div><div class="kicker">Current work</div><h2>What is being worked on now</h2></div><p>This is a dated summary of the current team workstreams, not a live dashboard. Detailed task discussions remain in the private repositories.</p></div>
+<div class="workgrid">
+<article class="workcard"><span class="state">Upstream</span><h3>Inventory first, process only what is missing</h3><p>The team is reconciling existing source and raw-input records, reusing verified data where possible, and avoiding duplicate downloads.</p></article>
+<article class="workcard"><span class="state">Upstream</span><h3>Make the pipeline portable and testable</h3><p>The shared implementation and engineering checks are being made reproducible across environments without relying on one live site’s private settings.</p></article>
+<article class="workcard"><span class="state">Upstream</span><h3>Commission the workflow on real inputs</h3><p>The pipeline is being tested against real metagenomic data. Integration issues must be resolved before routine production is treated as stable.</p></article>
+<article class="workcard"><span class="state">Analysis and paper</span><h3>Keep downstream work tied to exact inputs</h3><p>Analysis and manuscript work are being organized around explicit dependencies and supporting evidence rather than an unspecified latest version.</p></article>
+<article class="workcard"><span class="state">Collaboration</span><h3>Standardize documentation across repositories</h3><p>Contributor guidance and repository-facing explanations are being aligned across the source baseline, analysis, and manuscript workspaces.</p></article>
+</div>
+<div class="note"><strong>Workflow status checked 26 October 2026:</strong> no GitHub Actions runs were queued or in progress across the four core research repositories at the time checked. The most recent upstream handoff check had completed successfully. This does not report live high-performance-computing jobs.</div>
+</div>
+</section>
+
+<section id="collaboration">
+<div class="wrap">
+<div class="section-head"><div><div class="kicker">How the team works</div><h2>Issues define the work; Pull Requests make changes reviewable</h2></div><p>GitHub is the shared review surface. The exact workflow depends on whether the work belongs to a private research repository or this public overview.</p></div>
+<div class="flow-grid">
+<div class="panel">
+<ol class="flowlist">
+<li><div><strong>Open an Issue for a real question or bounded task</strong><span>Explain what needs attention, why it matters, and the relevant paper, data, method, or code. Avoid mixing unrelated changes.</span></div></li>
+<li><div><strong>Work on a branch</strong><span>Start from the current shared base and keep the change focused.</span></div></li>
+<li><div><strong>Open a Pull Request</strong><span>State what changed, why, how it was checked, and whether a shared result or interpretation could change.</span></div></li>
+<li><div><strong>Run checks and request human review</strong><span>Automation can catch technical problems; shared changes are reviewed by Bohui (@bibobrain) before they are merged.</span></div></li>
+<li><div><strong>Merge, then pin the version used downstream</strong><span>When another analysis depends on the change, record the exact commit or data snapshot rather than relying on a moving latest branch.</span></div></li>
+</ol>
+</div>
+<aside class="boundary">
+<h3>Where to raise a question</h3>
+<p>Issues are used inside the private research repositories to coordinate production, analysis, and manuscript work. Issues are currently disabled on this public overview repository, so public-facing corrections should be proposed as a Pull Request. See the contribution guide for the intended scope.</p>
+<ul><li>Do not post private issue numbers or comment excerpts here.</li><li>Do not upload credentials, private paths, restricted metadata, raw data, or unpublished candidate-level results.</li><li>A successful check or merge is not, by itself, a scientific conclusion.</li></ul>
+<div class="actions"><a class="button primary" href="https://github.com/PlasticBPro/Extremome/blob/main/CONTRIBUTING.md">Read contribution guidance ↗</a><a class="button" href="https://github.com/PlasticBPro/Extremome/pulls">View public Pull Requests ↗</a></div>
+</aside>
+</div>
+</div>
+</section>
+
+<section id="scope">
+<div class="wrap">
+<div class="section-head"><div><div class="kicker">Public boundary</div><h2>Enough to understand the project, not an internal mirror</h2></div></div>
+<div class="public-private">
+<div class="scope"><h3>Included in this public overview</h3><ul><li>The research question and high-level pipeline.</li><li>Core repository responsibilities and first-level folder guidance.</li><li>Current work themes and the collaboration workflow.</li><li>The distinction between computational prioritization and measured biological activity.</li></ul></div>
+<div class="scope"><h3>Kept in the team workspace</h3><ul><li>Detailed internal qualification layers and candidate-selection logic.</li><li>Private Issues, Pull Request discussions, execution logs, and operational identifiers.</li><li>Live server bindings, cluster settings, private paths, and credentials.</li><li>Unpublished candidate-level results and raw data not approved for public distribution.</li></ul></div>
+</div>
+<div class="repo-note">The public page describes the research direction and working structure. It does not claim that the pipeline is fully qualified, that candidate enzymes are experimentally validated, or that the manuscript is complete.</div>
+</div>
+</section>
 </main>
+<footer><div class="wrap footerrow"><span>Extremome · Public project overview · Snapshot: 26 October 2026 (UTC+8)</span><span><a href="https://github.com/PlasticBPro/Extremome">Source repository</a> · <a href="https://plasticbpro.github.io/Extremome/">Published site</a></span></div></footer>
 </body>
 </html>
